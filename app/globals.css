@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #06141d;
+  --color-navy-950: #081a24;
+  --color-navy-900: #0c2331;
+  --color-navy-800: #143246;
+  --color-navy-700: #1f4256;
+  --color-navy-600: #2b5670;
+  --color-teal: #5ec8d2;
+  --color-teal-soft: #a7e3e8;
+  --color-teal-deep: #44887f;
+  --color-sun: #ecc044;
+  --color-sun-soft: #f6dd72;
+  --color-mint: #e8f6f6;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mark: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 0.9; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-navy-950);
+    color: #dbe9ee;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(94, 200, 210, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94, 200, 210, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .glass {
+    background: linear-gradient(160deg, rgba(31, 66, 86, 0.55), rgba(12, 35, 49, 0.55));
+    border: 1px solid rgba(167, 227, 232, 0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .glow-line {
+    background: linear-gradient(90deg, transparent, var(--color-teal), var(--color-sun), transparent);
+  }
+  .text-gradient {
+    background: linear-gradient(90deg, var(--color-teal), var(--color-sun-soft));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
